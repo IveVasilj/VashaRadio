@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/musicButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="230dp"
+        android:layout_height="75dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/radioButton"
+        android:layout_marginTop="66dp"
+        android:background="#163c89"
+        android:elevation="24dp"
+        android:text="music" />
+
+    <Button
+        android:id="@+id/radioButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="230dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="20dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="radio" />
+
+    <Button
+        android:id="@+id/ytButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="230dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/musicButton"
+        android:layout_marginBottom="66dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="youtube" />
+
+    <Button
+        android:id="@+id/gpsButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="230dp"
+        android:layout_height="75dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/musicButton"
+        android:layout_marginEnd="20dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="gps" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="230dp"
+        android:layout_height="75dp"
+        android:layout_alignStart="@+id/gpsButton"
+        android:layout_alignTop="@+id/ytButton"
+        android:background="@color/colorPrimaryDark"
+        android:text="settings" />
+
+    <Button
+        android:id="@+id/weatherBottun"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="230dp"
+        android:layout_height="75dp"
+        android:layout_alignStart="@+id/gpsButton"
+        android:layout_centerVertical="true"
+        android:background="@color/colorPrimaryDark"
+        android:text="weather" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/ford" />
+
+</RelativeLayout>
