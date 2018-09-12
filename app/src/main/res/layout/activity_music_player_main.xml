@@ -10,7 +10,8 @@
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/ford_focus"
+        android:scaleType="fitXY"
+        android:src="@drawable/music_player_background"
         tools:layout_editor_absoluteX="134dp"
         tools:layout_editor_absoluteY="32dp" />
 </android.support.constraint.ConstraintLayout>
