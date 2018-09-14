@@ -24,12 +24,7 @@ public class MainActivity extends AppCompatActivity {
         YTButton = (Button)findViewById(R.id.ytButton);
         RButton = (Button)findViewById(R.id.radioButton);
 
-        RButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
 
         MPButton.setOnClickListener(new View.OnClickListener() {
             @Override

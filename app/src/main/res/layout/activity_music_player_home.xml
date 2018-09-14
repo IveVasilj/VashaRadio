@@ -8,8 +8,8 @@
 
     <ListView
         android:id="@+id/musicList"
-        android:layout_width="944dp"
-        android:layout_height="511dp"
+        android:layout_width="940dp"
+        android:layout_height="871dp"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp" />
 </android.support.constraint.ConstraintLayout>
