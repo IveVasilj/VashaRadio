@@ -1,6 +1,7 @@
 package com.example.vasha.vasharadio;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         YTButton = (Button)findViewById(R.id.ytButton);
         RButton = (Button)findViewById(R.id.radioButton);
 
-
+        //playWelcomeSound();
 
         MPButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,5 +40,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, YoutubeActivity.class));
             }
         });
+
+
+    }
+
+    private void playWelcomeSound()
+    {
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.welcomesound);
+        mediaPlayer.start();
     }
 }
