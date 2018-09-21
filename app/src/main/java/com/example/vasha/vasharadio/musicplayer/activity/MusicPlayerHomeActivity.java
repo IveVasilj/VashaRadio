@@ -1,4 +1,4 @@
-package com.example.vasha.vasharadio.musicplayer;
+package com.example.vasha.vasharadio.musicplayer.activity;
 
 import android.Manifest;
 import android.content.ContentResolver;
@@ -12,41 +12,60 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.vasha.vasharadio.R;
+import com.example.vasha.vasharadio.musicplayer.adapter.MP3SongAdapter;
+import com.example.vasha.vasharadio.musicplayer.model.MP3Song;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MusicPlayerHomeActivity extends AppCompatActivity {
+
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
-    ListView musicList;
-    ArrayList<String> songsArrayList;
-    ArrayAdapter<String> songsArrayAdapter;
-    ArrayList<String> musicLocation = new ArrayList<>();
-    MediaPlayer mediaPlayer = new MediaPlayer();
+    private RecyclerView musicList;
+    private MP3SongAdapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private MediaPlayer mediaPlayer = new MediaPlayer();
+
+    private ArrayList<MP3Song> mp3SongArrayList = new ArrayList<>();
+    private ArrayList<String> musicLocation = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_player_home);
-        musicList = (ListView)findViewById(R.id.musicList);
-        songsArrayList = new ArrayList<>();
-        checkUserPermission();
-        songsArrayAdapter = new ArrayAdapter<String>(MusicPlayerHomeActivity.this,android.R.layout.simple_list_item_1, songsArrayList);
-        musicList.setAdapter(songsArrayAdapter);
 
-        musicList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        initialize();
+    }
+
+
+
+    private void initialize()
+    {
+        musicList = (RecyclerView)findViewById(R.id.musicList);
+        //this setting improves perfomance if layout size of recyclerview is not changed
+        musicList.setHasFixedSize(true);
+
+        //so that recyclerview has a similar behavior as listview
+        mLayoutManager = new LinearLayoutManager(this);
+        musicList.setLayoutManager(mLayoutManager);
+
+        checkUserPermission();
+
+        mAdapter = new MP3SongAdapter(mp3SongArrayList);
+        musicList.setAdapter(mAdapter);
+
+        mAdapter.setOnItemClickListener(new MP3SongAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(int position) {
                 playSelectedMP3File(position);
             }
         });
@@ -104,11 +123,13 @@ public class MusicPlayerHomeActivity extends AppCompatActivity {
             if(songCursor.moveToFirst())
             {
                 do{
+
                     String currentSongTitle = songCursor.getString(songCursor.getColumnIndex(MediaStore.Audio.Media.TITLE));
                     String currentSongArtist = songCursor.getString(songCursor.getColumnIndex(MediaStore.Audio.Media.ARTIST));
-                    String currentSongDuration = songCursor.getString(songCursor.getColumnIndex(MediaStore.Audio.Media.DURATION));
+
                     musicLocation.add(songCursor.getString(songCursor.getColumnIndex(MediaStore.Audio.Media.DATA)));
-                    songsArrayList.add(currentSongTitle + "\n" + currentSongArtist + "\n" + currentSongDuration);
+                    mp3SongArrayList.add(new MP3Song(currentSongTitle,currentSongArtist));
+
                 } while(songCursor.moveToNext());
             }
         }

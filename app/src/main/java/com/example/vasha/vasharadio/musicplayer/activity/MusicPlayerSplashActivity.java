@@ -1,4 +1,4 @@
-package com.example.vasha.vasharadio.musicplayer;
+package com.example.vasha.vasharadio.musicplayer.activity;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.vasha.vasharadio.R;
-
-import java.util.Spliterator;
 
 
 public class MusicPlayerSplashActivity extends AppCompatActivity {

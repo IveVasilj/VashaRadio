@@ -21,8 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".youtube.YoutubeActivity" />
-        <activity android:name=".musicplayer.MusicPlayerSplashActivity" />
-        <activity android:name=".musicplayer.MusicPlayerHomeActivity"></activity>
+        <activity android:name=".musicplayer.activity.MusicPlayerSplashActivity" />
+        <activity android:name=".musicplayer.activity.MusicPlayerHomeActivity"></activity>
     </application>
 
 </manifest>
