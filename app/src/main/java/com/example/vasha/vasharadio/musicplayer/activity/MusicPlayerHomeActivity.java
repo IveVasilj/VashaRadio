@@ -17,6 +17,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.vasha.vasharadio.R;
@@ -33,6 +34,7 @@ public class MusicPlayerHomeActivity extends AppCompatActivity {
     private MP3SongAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private MediaPlayer mediaPlayer = new MediaPlayer();
+    private SearchView searchView;
 
     private ArrayList<MP3Song> mp3SongArrayList = new ArrayList<>();
     private ArrayList<String> musicLocation = new ArrayList<>();
@@ -63,6 +65,20 @@ public class MusicPlayerHomeActivity extends AppCompatActivity {
         mAdapter = new MP3SongAdapter(mp3SongArrayList);
         musicList.setAdapter(mAdapter);
 
+        //searchView = (SearchView)findViewById(R.id.searchView);
+
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//           @Override
+//           public boolean onQueryTextSubmit(String query) {
+//               return false;
+//           }
+//
+//           @Override
+//           public boolean onQueryTextChange(String newText) {
+//               mAdapter.getFilter().filter(newText);
+//               return false;
+//           }
+//       });
         mAdapter.setOnItemClickListener(new MP3SongAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {

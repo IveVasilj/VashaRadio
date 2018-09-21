@@ -5,16 +5,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.example.vasha.vasharadio.R;
 import com.example.vasha.vasharadio.musicplayer.model.MP3Song;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MP3SongAdapter extends RecyclerView.Adapter<MP3SongAdapter.MP3SongViewHolder> {
+public class MP3SongAdapter extends RecyclerView.Adapter<MP3SongAdapter.MP3SongViewHolder> implements Filterable {
 
     private ArrayList<MP3Song> mp3SongArrayList;
+    private ArrayList<MP3Song> mp3SongArrayListFull;
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener{
@@ -52,6 +56,7 @@ public class MP3SongAdapter extends RecyclerView.Adapter<MP3SongAdapter.MP3SongV
 
     public MP3SongAdapter(ArrayList<MP3Song> mp3SongArrayList){
         this.mp3SongArrayList = mp3SongArrayList;
+        mp3SongArrayListFull = new ArrayList<>(mp3SongArrayList);
     }
 
     @NonNull
@@ -73,5 +78,44 @@ public class MP3SongAdapter extends RecyclerView.Adapter<MP3SongAdapter.MP3SongV
     public int getItemCount() {
         return mp3SongArrayList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return mp3SongArrayListFilter;
+    }
+
+    Filter mp3SongArrayListFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<MP3Song> mp3SongArrayListFiltered = new ArrayList<>();
+            if(constraint == null || constraint.length() == 0)
+            {
+                mp3SongArrayListFiltered.addAll(mp3SongArrayListFull);
+            }
+            else
+            {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for(MP3Song mp3Song : mp3SongArrayList)
+                {
+                    if(mp3Song.getSongTitle().toLowerCase().contains(filterPattern))
+                    {
+                        mp3SongArrayListFiltered.add(mp3Song);
+                    }
+                }
+            }
+
+            FilterResults filterResults = new FilterResults();
+            filterResults.values= mp3SongArrayListFiltered;
+
+            return filterResults;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            mp3SongArrayList.clear();
+            mp3SongArrayList.addAll((List)results.values);
+            notifyDataSetChanged();
+        }
+    };
 
 }
