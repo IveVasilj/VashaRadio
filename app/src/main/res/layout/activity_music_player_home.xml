@@ -8,19 +8,56 @@
     tools:context=".musicplayer.activity.MusicPlayerHomeActivity"
     >
 
-    <android.support.design.widget.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:background="@color/colorPrimary" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/musicList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="56dp"
+        android:layout_marginTop="60dp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <ImageButton
+        android:id="@+id/rewindButton"
+        style="@android:style/Widget.Holo.ImageButton"
+        android:layout_width="73dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="207dp"
+        app:srcCompat="@drawable/ic_rewind" />
+
+    <ImageButton
+        android:id="@+id/playAndPauseButton"
+        style="@android:style/Widget.Holo.ImageButton"
+        android:layout_width="78dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        app:srcCompat="@drawable/ic_play" />
+
+    <ImageButton
+        android:id="@+id/forwardButton"
+        style="@android:style/Widget.Holo.ImageButton"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="207dp"
+        android:layout_marginTop="-48dp"
+        app:srcCompat="@drawable/ic_forward" />
 
 </RelativeLayout>

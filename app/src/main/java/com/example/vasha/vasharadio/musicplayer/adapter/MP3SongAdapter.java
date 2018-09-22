@@ -17,12 +17,12 @@ import java.util.List;
 
 public class MP3SongAdapter extends RecyclerView.Adapter<MP3SongAdapter.MP3SongViewHolder> implements Filterable {
 
-    private ArrayList<MP3Song> mp3SongArrayList;
+    private static ArrayList<MP3Song> mp3SongArrayList;
     private ArrayList<MP3Song> mp3SongArrayListFull;
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener{
-        void onItemClick(int position);
+        void onItemClick(int position, ArrayList<MP3Song> songs);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener){
@@ -45,13 +45,12 @@ public class MP3SongAdapter extends RecyclerView.Adapter<MP3SongAdapter.MP3SongV
                     if(listener != null){
                         int position = getAdapterPosition();
                         if(position != RecyclerView.NO_POSITION){
-                            listener.onItemClick(position);
+                            listener.onItemClick(position,mp3SongArrayList);
                         }
                     }
                 }
             });
         }
-
     }
 
     public MP3SongAdapter(ArrayList<MP3Song> mp3SongArrayList){
