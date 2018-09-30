@@ -19,16 +19,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.SearchView;
 import android.widget.Toast;
-
 import com.example.vasha.vasharadio.R;
 import com.example.vasha.vasharadio.musicplayer.adapter.MP3SongAdapter;
 import com.example.vasha.vasharadio.musicplayer.model.MP3Song;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -38,7 +33,7 @@ public class MusicPlayerHomeActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 1;
 
     private RecyclerView musicList;
-    private ImageButton playandPauseButton;
+    private ImageButton playAndPauseButton;
     private ImageButton forwardButton;
     private ImageButton rewindButton;
 
@@ -66,7 +61,7 @@ public class MusicPlayerHomeActivity extends AppCompatActivity {
     {
         //Connecting variables with views
         musicList = (RecyclerView)findViewById(R.id.musicList);
-        playandPauseButton = (ImageButton)findViewById(R.id.playAndPauseButton);
+        playAndPauseButton = (ImageButton)findViewById(R.id.playAndPauseButton);
         forwardButton = (ImageButton)findViewById(R.id.forwardButton);
         rewindButton = (ImageButton)findViewById(R.id.rewindButton);
 
@@ -91,12 +86,12 @@ public class MusicPlayerHomeActivity extends AppCompatActivity {
            }
         });
 
-        playandPauseButton.setOnClickListener(new View.OnClickListener() {
+        playAndPauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(mediaPlayer.isPlaying()){
 
-                    if(playandPauseButton.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.ic_pause).getConstantState()){
+                    if(playAndPauseButton.getDrawable().getConstantState() == getResources().getDrawable(R.drawable.ic_pause).getConstantState()){
                         pauseSelectedMP3File();
                     }
                     else{
@@ -129,10 +124,10 @@ public class MusicPlayerHomeActivity extends AppCompatActivity {
     private void checkIfSongIsPlaying()
     {
         if(mediaPlayer.isPlaying()){
-            playandPauseButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause));
+            playAndPauseButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause));
         }
         else{
-            playandPauseButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_play));
+            playAndPauseButton.setImageDrawable(getResources().getDrawable(R.drawable.ic_play));
         }
     }
 
@@ -199,13 +194,7 @@ public class MusicPlayerHomeActivity extends AppCompatActivity {
 
     private void playSelectedMP3File(int id, ArrayList<MP3Song> songs)
     {
-        if(mediaPlayer.isPlaying())
-        {
-            mediaPlayer.stop();
-            mediaPlayer.reset();
-        }
-
-        mediaPlayer.reset();
+        checkIfMP3isPlaying();
 
         try {
             mediaPlayer.setDataSource(songs.get(id).getSongLocation().toString());
@@ -232,13 +221,7 @@ public class MusicPlayerHomeActivity extends AppCompatActivity {
     }
 
     private void goToPreviousMP3File(String dataSource){
-        if(mediaPlayer.isPlaying())
-        {
-            mediaPlayer.stop();
-            mediaPlayer.reset();
-        }
-
-        mediaPlayer.reset();
+        checkIfMP3isPlaying();
 
         try {
             mediaPlayer.setDataSource(dataSource);
@@ -254,13 +237,7 @@ public class MusicPlayerHomeActivity extends AppCompatActivity {
     private void shuffleMP3Files(){
         int id = randomSong.nextInt(mp3SongArrayList.size() - 1) + 0;
         rememberPreviousSong = id;
-        if(mediaPlayer.isPlaying())
-        {
-            mediaPlayer.stop();
-            mediaPlayer.reset();
-        }
-
-        mediaPlayer.reset();
+        checkIfMP3isPlaying();
 
         try {
             mediaPlayer.setDataSource(mp3SongArrayList.get(id).getSongLocation().toString());
@@ -271,6 +248,16 @@ public class MusicPlayerHomeActivity extends AppCompatActivity {
 
         mediaPlayer.start();
         checkIfSongIsPlaying();
+    }
+
+    private void checkIfMP3isPlaying(){
+        if(mediaPlayer.isPlaying())
+        {
+            mediaPlayer.stop();
+            mediaPlayer.reset();
+        }
+
+        mediaPlayer.reset();
     }
 
     @Override
