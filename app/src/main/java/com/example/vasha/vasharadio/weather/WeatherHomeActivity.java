@@ -17,12 +17,12 @@ public class WeatherHomeActivity extends AppCompatActivity {
     TextView main;
     TextView currentTemp;
     TextView minMaxTemp;
+    TextView apparentTemp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_home);
-
 
         Intent intent = getIntent();
 
@@ -30,12 +30,13 @@ public class WeatherHomeActivity extends AppCompatActivity {
         main = (TextView)findViewById(R.id.description);
         currentTemp = (TextView)findViewById(R.id.currentTemp);
         minMaxTemp = (TextView)findViewById(R.id.minMaxTemp);
+        apparentTemp = (TextView)findViewById(R.id.apparentTemp);
 
-
-        cityCountry.setText(" " + intent.getStringExtra("city") + ", " + intent.getStringExtra("country"));
-        main.setText(intent.getStringExtra("main"));
-        currentTemp.setText(Integer.toString(intent.getIntExtra("currentTemp",0)) + "°");
-        minMaxTemp.setText(Integer.toString(intent.getIntExtra("tempMax",0)) + "°" + " / " + Integer.toString(intent.getIntExtra("tempMin",0)) + "°");
+        currentTemp.setText(Double.toString(intent.getDoubleExtra("temp",0)) + "°");
+        cityCountry.setText(" " + intent.getStringExtra("region"));
+        minMaxTemp.setText(Double.toString(intent.getDoubleExtra("tempMax",0.0)) + "°" + " / " + Double.toString(intent.getDoubleExtra("tempMin",0.0)) + "°");
+        main.setText(intent.getStringExtra("summary"));
+        apparentTemp.setText("Feels like " + Double.toString(intent.getDoubleExtra("apparentTemp",0.0)) + "°");
     }
 
 

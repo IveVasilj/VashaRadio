@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        System.out.println("VRIME ALOOOOOOO:::::::::::::: " + System.currentTimeMillis());
         initialize();
     }
 
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setTextViewDate(){
-        String currentDateTimeString = DateFormat.getDateInstance().format(new Date());
+        String currentDateTimeString = DateFormat.getDateInstance().format(new Date(1538596531));
         date.setText(currentDateTimeString);
     }
 }

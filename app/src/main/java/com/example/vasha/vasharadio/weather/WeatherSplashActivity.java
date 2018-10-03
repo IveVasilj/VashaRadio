@@ -1,6 +1,7 @@
 package com.example.vasha.vasharadio.weather;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -9,7 +10,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -26,6 +26,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.DateFormat;
+import java.util.Date;
 
 public class WeatherSplashActivity extends AppCompatActivity{
 
@@ -57,6 +60,7 @@ public class WeatherSplashActivity extends AppCompatActivity{
         }
     }
 
+    @SuppressLint("MissingPermission")
     private void getLastLocation() {
         mFusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
@@ -74,25 +78,24 @@ public class WeatherSplashActivity extends AppCompatActivity{
     }
 
     private void apiRequest(double latitude, double longitude) {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=metric&appid=51e8815b3da5517f14cb39b05d2cf9ac", null,
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, "https://api.darksky.net/forecast/0ad19f6ac2ec3942d4300b750576a445/" + latitude + "," + longitude + "?units=auto", null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            String main = response.getJSONArray("weather").getJSONObject(0).getString("main");
-                            int currentTemp = response.getJSONObject("main").getInt("temp");
-                            int tempMin = response.getJSONObject("main").getInt("temp_min");
-                            int tempMax = response.getJSONObject("main").getInt("temp_max");
-                            String city = response.getString("name");
-                            String country = response.getJSONObject("sys").getString("country");
+                            double mainTemp = response.getJSONObject("currently").getDouble("temperature");
+                            double apparentTemp = response.getJSONObject("currently").getDouble("apparentTemperature");
+                            String summary =  response.getJSONObject("currently").getString("summary");
+                            String region = response.getJSONArray("alerts").getJSONObject(0).getJSONArray("regions").getString(0);
+                            double[] temps = getTemperatures(response);
 
                             Intent intent = new Intent(WeatherSplashActivity.this, WeatherHomeActivity.class);
-                            intent.putExtra("main", main);
-                            intent.putExtra("currentTemp", currentTemp);
-                            intent.putExtra("tempMin", tempMin);
-                            intent.putExtra("tempMax", tempMax);
-                            intent.putExtra("city", city);
-                            intent.putExtra("country", country);
+                            intent.putExtra("temp", mainTemp);
+                            intent.putExtra("region", region);
+                            intent.putExtra("tempMax",temps[0]);
+                            intent.putExtra("tempMin",temps[1]);
+                            intent.putExtra("summary", summary);
+                            intent.putExtra("apparentTemp", apparentTemp);
 
                             startActivity(intent);
                         } catch (JSONException e) {
@@ -108,6 +111,27 @@ public class WeatherSplashActivity extends AppCompatActivity{
         queue.add(jsonObjectRequest);
     }
 
+    private double[] getTemperatures(JSONObject response) throws JSONException {
+        double[] temps = new double[2];
+        int i = 0;
+        temps[0] = response.getJSONObject("daily").getJSONArray("data").getJSONObject(i).getDouble("temperatureHigh");
+        temps[1] = response.getJSONObject("daily").getJSONArray("data").getJSONObject(i).getDouble("temperatureLow");
+        long timeMs = response.getJSONObject("daily").getJSONArray("data").getJSONObject(i).getInt("time");
+        while(true){
+
+            if(!DateFormat.getDateInstance().format(new Date()).equals(DateFormat.getDateInstance().format(new Date(timeMs * 1000)))){
+                break;
+            }
+
+            ++i;
+            timeMs = response.getJSONObject("daily").getJSONArray("data").getJSONObject(i).getInt("time");
+            temps[0] = response.getJSONObject("daily").getJSONArray("data").getJSONObject(i).getDouble("temperatureHigh");
+            temps[1] = response.getJSONObject("daily").getJSONArray("data").getJSONObject(i).getDouble("temperatureLow");
+        }
+
+        return temps;
+    }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
@@ -118,7 +142,7 @@ public class WeatherSplashActivity extends AppCompatActivity{
                     Toast.makeText(WeatherSplashActivity.this, "Permission denied!", Toast.LENGTH_SHORT).show();
                     finish();
                 }
-                return;
+
             }
         }
     }
