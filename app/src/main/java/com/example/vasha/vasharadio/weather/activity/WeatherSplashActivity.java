@@ -1,4 +1,4 @@
-package com.example.vasha.vasharadio.weather;
+package com.example.vasha.vasharadio.weather.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.vasha.vasharadio.R;
+import com.example.vasha.vasharadio.weather.model.ForecastModel;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,6 +29,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class WeatherSplashActivity extends AppCompatActivity{
@@ -96,6 +99,7 @@ public class WeatherSplashActivity extends AppCompatActivity{
                             intent.putExtra("tempMin",temps[1]);
                             intent.putExtra("summary", summary);
                             intent.putExtra("apparentTemp", apparentTemp);
+                            intent.putParcelableArrayListExtra("hourlyForecast",get24HourForecast(response));
 
                             startActivity(intent);
                         } catch (JSONException e) {
@@ -109,6 +113,16 @@ public class WeatherSplashActivity extends AppCompatActivity{
             }
         });
         queue.add(jsonObjectRequest);
+    }
+
+    private ArrayList<ForecastModel> get24HourForecast(JSONObject response) throws JSONException {
+        ArrayList<ForecastModel> hourlyForecast = new ArrayList<>();
+        for(int i = 2;i<=26;i++)
+        {
+            hourlyForecast.add(new ForecastModel(response.getJSONObject("hourly").getJSONArray("data").getJSONObject(i).getDouble("temperature"),response.getJSONObject("hourly").getJSONArray("data").getJSONObject(i).getInt("time")));
+        }
+
+        return hourlyForecast;
     }
 
     private double[] getTemperatures(JSONObject response) throws JSONException {
