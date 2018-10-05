@@ -59,7 +59,8 @@ public class WeatherSplashActivity extends AppCompatActivity{
                 ActivityCompat.requestPermissions(WeatherSplashActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
             }
         } else {
-            getLastLocation();
+            apiRequest();
+            //getLastLocation();
         }
     }
 
@@ -71,7 +72,7 @@ public class WeatherSplashActivity extends AppCompatActivity{
                     public void onSuccess(Location location) {
                         // Got last known location. In some rare situations this can be null.
                         if (location != null) {
-                            apiRequest(location.getLatitude(), location.getLongitude());
+                            //apiRequest(location.getLatitude(), location.getLongitude());
                         }
                         else{
                             System.out.print("error");
@@ -80,8 +81,8 @@ public class WeatherSplashActivity extends AppCompatActivity{
                 });
     }
 
-    private void apiRequest(double latitude, double longitude) {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, "https://api.darksky.net/forecast/0ad19f6ac2ec3942d4300b750576a445/" + latitude + "," + longitude + "?units=auto", null,
+    private void apiRequest() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, "https://api.darksky.net/forecast/0ad19f6ac2ec3942d4300b750576a445/43.5081,16.4402?units=auto", null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -117,7 +118,7 @@ public class WeatherSplashActivity extends AppCompatActivity{
 
     private ArrayList<ForecastModel> get24HourForecast(JSONObject response) throws JSONException {
         ArrayList<ForecastModel> hourlyForecast = new ArrayList<>();
-        for(int i = 2;i<=26;i++)
+        for(int i = 1;i<=24;i++)
         {
             hourlyForecast.add(new ForecastModel(response.getJSONObject("hourly").getJSONArray("data").getJSONObject(i).getDouble("temperature"),response.getJSONObject("hourly").getJSONArray("data").getJSONObject(i).getInt("time")));
         }
@@ -151,7 +152,7 @@ public class WeatherSplashActivity extends AppCompatActivity{
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    getLastLocation();
+                    apiRequest();
                 } else {
                     Toast.makeText(WeatherSplashActivity.this, "Permission denied!", Toast.LENGTH_SHORT).show();
                     finish();
