@@ -24,4 +24,5 @@
         android:layout_alignStart="@+id/songArtist"
         android:text="TextView"
         android:textColor="@color/songTextColor" />
+
 </RelativeLayout>

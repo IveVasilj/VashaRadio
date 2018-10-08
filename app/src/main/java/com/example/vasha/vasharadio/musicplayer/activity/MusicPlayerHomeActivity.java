@@ -56,7 +56,6 @@ public class MusicPlayerHomeActivity extends AppCompatActivity {
     }
 
 
-
     private void initialize()
     {
         //Connecting variables with views
@@ -190,6 +189,8 @@ public class MusicPlayerHomeActivity extends AppCompatActivity {
                 } while(songCursor.moveToNext());
             }
         }
+
+        songCursor.close();
     }
 
     private void playSelectedMP3File(int id, ArrayList<MP3Song> songs)

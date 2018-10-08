@@ -9,13 +9,13 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:hardwareAccelerated="false"
-        android:largeHeap="true">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:screenOrientation="landscape"
@@ -53,12 +53,15 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyB0ko1hvXFXC01Z081ngt5QAusQq5ER7m0" />
 
-        <activity android:name=".weather.activity.WeatherSplashActivity"
+        <activity
+            android:name=".weather.activity.WeatherSplashActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".weather.activity.WeatherHomeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".weather.activity.WeatherHomeActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SettingsHomeActivity"></activity>
     </application>
 
 </manifest>
