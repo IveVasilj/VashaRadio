@@ -8,16 +8,19 @@ public class ForecastModel implements Parcelable{
     private double tempMax;
     private double tempMin;
     private long epochTimestamp;
+    private String weatherIcon;
 
-    public ForecastModel(double currentTemp, long epochTimestamp){
+    public ForecastModel(double currentTemp, long epochTimestamp, String weatherIcon){
         this.epochTimestamp = epochTimestamp;
         this.currentTemp = currentTemp;
+        this.weatherIcon = weatherIcon;
     }
 
-    public ForecastModel(int epochTimestamp, double tempMax, double tempMin){
+    public ForecastModel(int epochTimestamp, double tempMax, double tempMin, String weatherIcon){
         this.epochTimestamp = epochTimestamp;
         this.tempMax = tempMax;
         this.tempMin = tempMin;
+        this.weatherIcon = weatherIcon;
     }
 
     public double getCurrentTemp() {
@@ -36,6 +39,10 @@ public class ForecastModel implements Parcelable{
         return epochTimestamp;
     }
 
+    public String getWeatherIcon() {
+        return weatherIcon;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -47,6 +54,7 @@ public class ForecastModel implements Parcelable{
         dest.writeDouble(tempMax);
         dest.writeDouble(tempMin);
         dest.writeLong(epochTimestamp);
+        dest.writeString(weatherIcon);
     }
 
     public static final Parcelable.Creator<ForecastModel> CREATOR = new Parcelable.Creator<ForecastModel>(){
@@ -66,5 +74,6 @@ public class ForecastModel implements Parcelable{
         tempMax = source.readDouble();
         tempMin = source.readDouble();
         epochTimestamp = source.readLong();
+        weatherIcon = source.readString();
     }
 }

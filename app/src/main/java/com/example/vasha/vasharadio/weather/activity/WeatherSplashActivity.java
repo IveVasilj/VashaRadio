@@ -4,6 +4,8 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -28,7 +30,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class WeatherSplashActivity extends AppCompatActivity{
 
@@ -124,15 +129,37 @@ public class WeatherSplashActivity extends AppCompatActivity{
                             double mainTemp = response.getJSONObject("currently").getDouble("temperature");
                             double apparentTemp = response.getJSONObject("currently").getDouble("apparentTemperature");
                             String summary =  response.getJSONObject("currently").getString("summary");
-                            String region = response.getJSONArray("alerts").getJSONObject(0).getJSONArray("regions").getString(0);
                             double[] temps = getTemperatures(response);
+                            int[] suntimes = getSunTimes(response);
                             Double humidity = response.getJSONObject("currently").getDouble("humidity");
                             int uvIndex = response.getJSONObject("currently").getInt("uvIndex");
                             int windDirection = response.getJSONObject("currently").getInt("windBearing");
-
+                            double windSpeed = response.getJSONObject("currently").getDouble("windSpeed");
                             Intent intent = new Intent(WeatherSplashActivity.this, WeatherHomeActivity.class);
 
-                            putExtraValues(intent,mainTemp,apparentTemp,summary,region,temps,humidity,uvIndex,windDirection,response);
+                            String[] LocationInformation = new String[3];
+                            try {
+                                LocationInformation = getCityAndCountryName();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            intent.putExtra("city", LocationInformation[1]);
+                            intent.putExtra("country", LocationInformation[2]);
+                            intent.putExtra("temp", mainTemp);
+                            intent.putExtra("tempMax",temps[0]);
+                            intent.putExtra("tempMin",temps[1]);
+                            intent.putExtra("summary", summary);
+                            intent.putExtra("apparentTemp", apparentTemp);
+                            intent.putExtra("humidity",humidity);
+                            intent.putExtra("uvindex",uvIndex);
+                            intent.putExtra("windDirection",getWindDirection(windDirection));
+                            intent.putExtra("windSpeed",windSpeed);
+                            intent.putExtra("sunrise",suntimes[0]);
+                            intent.putExtra("sunset",suntimes[1]);
+                            intent.putParcelableArrayListExtra("hourlyForecast", getHourlyForecast(response));
+                            intent.putParcelableArrayListExtra("weeklyForecast",getWeeklyForecast(response));
+
 
                             startActivity(intent);
                         } catch (JSONException e) {
@@ -149,19 +176,22 @@ public class WeatherSplashActivity extends AppCompatActivity{
         queue.add(jsonObjectRequest);
     }
 
-    //Puts extra values into intent and starts new activity
-    private void putExtraValues(Intent intent, double mainTemp, double apparentTemp, String summary, String region, double[] temps, Double humidity, int uvindex, int windDirection, JSONObject response) throws JSONException{
-        intent.putExtra("temp", mainTemp);
-        intent.putExtra("region", region);
-        intent.putExtra("tempMax",temps[0]);
-        intent.putExtra("tempMin",temps[1]);
-        intent.putExtra("summary", summary);
-        intent.putExtra("apparentTemp", apparentTemp);
-        intent.putExtra("humidity",humidity);
-        intent.putExtra("uvindex",uvindex);
-        intent.putExtra("windDirection",getWindDirection(windDirection));
-        intent.putParcelableArrayListExtra("hourlyForecast", getHourlyForecast(response));
-        intent.putParcelableArrayListExtra("weeklyForecast",getWeeklyForecast(response));
+    private String[] getCityAndCountryName() throws IOException {
+        String[] cityAndCountry = new String[2];
+        Geocoder gcd = new Geocoder(WeatherSplashActivity.this, Locale.getDefault());
+        List<Address> addresses = gcd.getFromLocation(43.5081, 16.4402, 1);
+        cityAndCountry = addresses.get(0).getAddressLine(0).split(",");
+
+        return cityAndCountry;
+    }
+
+    private int[] getSunTimes(JSONObject response) throws JSONException {
+        int[] suntimes = new int[2];
+
+        suntimes[0] = response.getJSONObject("daily").getJSONArray("data").getJSONObject(0).getInt("sunriseTime");
+        suntimes[1] = response.getJSONObject("daily").getJSONArray("data").getJSONObject(0).getInt("sunsetTime");
+
+        return suntimes;
     }
 
     //gets wind direction from api response
@@ -176,7 +206,7 @@ public class WeatherSplashActivity extends AppCompatActivity{
         ArrayList<ForecastModel> hourlyForecast = new ArrayList<>();
         for(int i = 1;i<=24;i++)
         {
-            hourlyForecast.add(new ForecastModel(response.getJSONObject("hourly").getJSONArray("data").getJSONObject(i).getDouble("temperature"),response.getJSONObject("hourly").getJSONArray("data").getJSONObject(i).getInt("time")));
+            hourlyForecast.add(new ForecastModel(response.getJSONObject("hourly").getJSONArray("data").getJSONObject(i).getDouble("temperature"),response.getJSONObject("hourly").getJSONArray("data").getJSONObject(i).getInt("time"),response.getJSONObject("hourly").getJSONArray("data").getJSONObject(i).getString("icon")));
         }
         return hourlyForecast;
     }
@@ -184,8 +214,8 @@ public class WeatherSplashActivity extends AppCompatActivity{
     //gets all the data needed for weekly forecast
     private ArrayList<ForecastModel> getWeeklyForecast(JSONObject response) throws JSONException{
         ArrayList<ForecastModel> weeklyForecast = new ArrayList<>();
-        for(int i = 0;i<=7;i++){
-            weeklyForecast.add(new ForecastModel(response.getJSONObject("daily").getJSONArray("data").getJSONObject(i).getInt("time"),response.getJSONObject("daily").getJSONArray("data").getJSONObject(i).getDouble("temperatureMax"),response.getJSONObject("daily").getJSONArray("data").getJSONObject(i).getDouble("temperatureMin")));
+        for(int i = 1;i<=7;i++){
+            weeklyForecast.add(new ForecastModel(response.getJSONObject("daily").getJSONArray("data").getJSONObject(i).getInt("time"),response.getJSONObject("daily").getJSONArray("data").getJSONObject(i).getDouble("temperatureMax"),response.getJSONObject("daily").getJSONArray("data").getJSONObject(i).getDouble("temperatureMin"),response.getJSONObject("daily").getJSONArray("data").getJSONObject(i).getString("icon")));
         }
         return weeklyForecast;
     }
@@ -210,8 +240,4 @@ public class WeatherSplashActivity extends AppCompatActivity{
 
         return temps;
     }
-
-
-
-
 }

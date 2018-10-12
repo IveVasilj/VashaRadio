@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/weather3">
+    android:focusable="auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -113,12 +115,11 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <!--suppress AndroidUnknownAttribute -->
+                        <com.github.pwittchen.weathericonview.WeatherIconView
+                            android:id="@+id/my_weather_icon"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content" />
 
                         <TextView
                             android:id="@+id/tempNow"
@@ -145,12 +146,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -177,12 +175,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -208,12 +203,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -240,12 +232,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -272,12 +261,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -304,12 +290,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -336,12 +319,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -369,13 +349,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
-
+                            android:layout_height="wrap_content"/>
                         <TextView
 
                             android:layout_width="match_parent"
@@ -401,12 +377,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -433,12 +406,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -464,12 +434,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -496,12 +463,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -528,12 +492,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -560,12 +521,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -591,12 +549,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -623,12 +578,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -655,12 +607,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -687,12 +636,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -719,12 +665,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -750,12 +693,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -782,12 +722,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -814,12 +751,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -846,12 +780,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -878,12 +809,9 @@
                             android:textAlignment="center"
                             android:textColor="@android:color/white" />
 
-                        <ImageView
+                        <com.github.pwittchen.weathericonview.WeatherIconView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="7dp"
-                            android:paddingTop="7dp"
-                            android:src="@drawable/sun" />
+                            android:layout_height="wrap_content"/>
 
                         <TextView
 
@@ -903,139 +831,26 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
             app:columnCount="2"
-            app:rowCount="2">
+            app:rowCount="1">
 
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_column="1"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill"
-                app:layout_row="0"
-                app:layout_rowWeight="1">
-
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:text="Comfort level"
-                    android:textColor="@android:color/darker_gray" />
-
-                <ImageView
-                    android:id="@+id/imageView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginStart="86dp"
-                    android:layout_marginTop="52dp"
-                    app:srcCompat="@drawable/humidity" />
-
-                <TextView
-                    android:id="@+id/humidity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignEnd="@+id/imageView6"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="89dp"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/feelslike"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignTop="@+id/imageView6"
-                    android:layout_marginEnd="187dp"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/uvindex"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/imageView6"
-                    android:layout_alignEnd="@+id/feelslike"
-                    android:textColor="@android:color/white" />
-
-            </RelativeLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:id="@+id/forecastLinear"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 app:layout_column="0"
                 app:layout_columnWeight="1"
-                app:layout_row="1"
-                app:layout_rowWeight="1">
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:text="Wind"
-                    android:textColor="@android:color/darker_gray" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="20dp"
-                        android:src="@drawable/wind" />
-
-                    <TextView
-                        android:id="@+id/windDirection"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textColor="@android:color/white" />
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_column="1"
-                app:layout_columnWeight="1"
-                app:layout_row="1"
-                app:layout_rowWeight="1">
-
-
-                <TextView
-                    android:id="@+id/textView15"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_column="0"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill"
                 app:layout_row="0">
 
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
                     android:text="Weekly forecast"
                     android:textColor="@android:color/darker_gray" />
 
@@ -1043,7 +858,9 @@
                     android:id="@+id/day1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -1052,11 +869,14 @@
                         android:gravity="center_vertical"
                         android:textColor="@android:color/white" />
 
-                    <ImageView
+
+                    <com.github.pwittchen.weathericonview.WeatherIconView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:src="@drawable/sun" />
+                        android:textAlignment="center" />
+
+
 
                     <TextView
                         android:layout_width="0dp"
@@ -1064,13 +884,16 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical|end"
                         android:textColor="@android:color/white" />
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/day2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -1079,11 +902,11 @@
                         android:gravity="center_vertical"
                         android:textColor="@android:color/white" />
 
-                    <ImageView
+                    <com.github.pwittchen.weathericonview.WeatherIconView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:src="@drawable/sun" />
+                        android:textAlignment="center"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -1097,7 +920,9 @@
                     android:id="@+id/day3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -1106,11 +931,11 @@
                         android:gravity="center_vertical"
                         android:textColor="@android:color/white" />
 
-                    <ImageView
+                    <com.github.pwittchen.weathericonview.WeatherIconView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:src="@drawable/sun" />
+                        android:textAlignment="center"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -1124,7 +949,9 @@
                     android:id="@+id/day4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -1133,11 +960,11 @@
                         android:gravity="center_vertical"
                         android:textColor="@android:color/white" />
 
-                    <ImageView
+                    <com.github.pwittchen.weathericonview.WeatherIconView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:src="@drawable/sun" />
+                        android:textAlignment="center"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -1151,7 +978,9 @@
                     android:id="@+id/day5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -1160,11 +989,11 @@
                         android:gravity="center_vertical"
                         android:textColor="@android:color/white" />
 
-                    <ImageView
+                    <com.github.pwittchen.weathericonview.WeatherIconView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:src="@drawable/sun" />
+                        android:textAlignment="center"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -1178,7 +1007,9 @@
                     android:id="@+id/day6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -1187,11 +1018,11 @@
                         android:gravity="center_vertical"
                         android:textColor="@android:color/white" />
 
-                    <ImageView
+                    <com.github.pwittchen.weathericonview.WeatherIconView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:src="@drawable/sun" />
+                        android:textAlignment="center"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -1205,7 +1036,9 @@
                     android:id="@+id/day7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -1214,11 +1047,11 @@
                         android:gravity="center_vertical"
                         android:textColor="@android:color/white" />
 
-                    <ImageView
+                    <com.github.pwittchen.weathericonview.WeatherIconView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:src="@drawable/sun" />
+                        android:textAlignment="center"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -1228,8 +1061,253 @@
                         android:textColor="@android:color/white" />
                 </LinearLayout>
 
-
             </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/otherLinear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingStart="15dp"
+                app:layout_column="1"
+                app:layout_columnWeight="1"
+                app:layout_row="0"
+                app:layout_rowWeight="1">
+
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Comfort level"
+                    android:textColor="@android:color/darker_gray" />
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView28"
+                    android:background="?android:attr/listDivider" />
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="97dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="111dp"
+                    android:text="Wind"
+                    android:textColor="@android:color/darker_gray" />
+
+                <View
+                    android:id="@+id/divider5"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView6"
+                    android:background="?android:attr/listDivider" />
+
+                <View
+                    android:id="@+id/divider6"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="139dp"
+                    android:background="?android:attr/listDivider" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignStart="@+id/textView28"
+                    android:layout_marginBottom="105dp"
+                    android:text="Sunset and sunrise"
+                    android:textColor="@android:color/darker_gray" />
+
+                <View
+                    android:id="@+id/divider7"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/textView7"
+                    android:layout_marginTop="-105dp"
+                    android:background="?android:attr/listDivider" />
+
+                <View
+                    android:id="@+id/divider8"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="11dp"
+                    android:background="?android:attr/listDivider" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/divider3"
+                    android:layout_marginTop="6dp"
+                    android:layout_toEndOf="@+id/textView6"
+                    app:srcCompat="@drawable/humidity" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/textView28"
+                    android:layout_marginEnd="165dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Humidity:"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/textView8"
+                    android:layout_below="@+id/textView8"
+                    android:layout_marginTop="6dp"
+                    android:text="UV Index:"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/textView8"
+                    android:layout_below="@+id/textView9"
+                    android:layout_marginTop="6dp"
+                    android:text="Feels like:"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/humidity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignTop="@+id/textView8"
+                    android:layout_marginEnd="70dp"
+                    android:text="TextView"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/uvindex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/humidity"
+                    android:layout_alignTop="@+id/textView9"
+                    android:text="TextView"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/feelslike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/divider4"
+                    android:layout_alignStart="@+id/humidity"
+                    android:layout_marginBottom="-92dp"
+                    android:text="TextView"
+                    android:textColor="@android:color/white" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView6"
+                    android:layout_marginTop="11dp"
+                    android:layout_toEndOf="@+id/textView6"
+                    app:srcCompat="@drawable/wind" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/textView11"
+                    android:layout_alignTop="@+id/imageView4"
+                    android:text="Wind direction:"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/imageView4"
+                    android:layout_alignStart="@+id/textView15"
+                    android:text="Wind speed:"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/windDirection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/humidity"
+                    android:layout_alignTop="@+id/imageView4"
+                    android:text="TextView"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:id="@+id/windSpeed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/humidity"
+                    android:layout_alignTop="@+id/textView16"
+                    android:text="TextView"
+                    android:textColor="@android:color/white" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/sunrise"
+                    android:layout_below="@+id/textView7"
+                    android:layout_marginTop="-105dp"
+                    app:srcCompat="@drawable/sunrise" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/sunset"
+                    android:layout_below="@+id/textView7"
+                    android:layout_marginTop="-105dp"
+                    app:srcCompat="@drawable/sunset" />
+
+                <TextView
+                    android:id="@+id/sunrise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/imageView6"
+                    android:layout_marginStart="117dp"
+                    android:text="TextView"
+                    android:textColor="@android:color/holo_orange_light" />
+
+                <TextView
+                    android:id="@+id/sunset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/imageView5"
+                    android:layout_marginEnd="96dp"
+                    android:text="TextView"
+                    android:textColor="@android:color/holo_orange_dark" />
+
+
+            </RelativeLayout>
 
         </android.support.v7.widget.GridLayout>
 

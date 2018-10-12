@@ -6,12 +6,5 @@
     android:layout_height="match_parent"
     tools:context=".weather.activity.WeatherSplashActivity">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/splash"
-        tools:layout_editor_absoluteX="301dp"
-        tools:layout_editor_absoluteY="176dp" />
 
 </RelativeLayout>
